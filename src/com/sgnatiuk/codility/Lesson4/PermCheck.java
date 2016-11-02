@@ -5,19 +5,11 @@ package com.sgnatiuk.codility.Lesson4;
  */
 public class PermCheck {
     public int solution(int[] A) {
-        int xor = 0;
-        int xorI = 0;
-        int sum = 0;
+        int res = 0;
         for (int i = 0; i < A.length; i++) {
-            if(A[i] > A.length || A[i] < 1){
-                return 0;
-            }
-            sum += A[i];
-            xor ^= A[i];
-            xorI ^= i+1;
+            if(A[i] > A.length || A[i] < 1) return 0;
+            res ^= (i+1) ^ A[i];
         }
-        int n = A.length;
-        int expectedSum = n*(n+1)/2;
-        return sum == expectedSum && xor == xorI ? 1 : 0;
+        return res == 0 ? 1 : 0;
     }
 }
